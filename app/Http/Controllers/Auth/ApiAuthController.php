@@ -10,19 +10,18 @@ use Illuminate\Support\Facades\Hash;
 
 class ApiAuthController extends Controller
 {
-    /**
-     * Create a new AuthController instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['register', 'login']]);
+        $this->middleware('auth:api', [ 'except' => ['register', 'login'] ]);
     }
 
-    public function register(StoreUser $request) 
+    public function register() 
     { 
-        $input = $request->validated();
+        $input = request()->validate([
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/'
+        ]);
+
         $input['password'] = Hash::make(request('password'));
 
         $user = User::create($input);
@@ -32,7 +31,7 @@ class ApiAuthController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        return $this->respondWithToken($token);
+        return $this->respondWithToken($token, auth('api')->user());
     }
 
     /**
@@ -42,13 +41,16 @@ class ApiAuthController extends Controller
      */
     public function login()
     {
-        $credentials = request(['email', 'password']);
+        request()->validate([
+            'email' => 'required',
+            'password' => 'required'
+        ]);
 
-        if (! $token = auth('api')->attempt($credentials)) {
+        if (! $token = auth('api')->attempt(request(['email', 'password']))) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        return $this->respondWithToken($token);
+        return $this->respondWithToken($token, auth('api')->user());
     }
 
     /**
@@ -58,7 +60,7 @@ class ApiAuthController extends Controller
      */
     public function me()
     {
-        return response()->json(auth('api')->user());
+        return response()->json(['user' => auth('api')->user()], 200);
     }
 
     /**
@@ -70,7 +72,7 @@ class ApiAuthController extends Controller
     {
         auth('api')->logout();
 
-        return response()->json(['message' => 'Successfully logged out']);
+        return response()->json(['message' => 'Successfully logged out'], 200);
     }
 
     /**
@@ -90,12 +92,13 @@ class ApiAuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function respondWithToken($token)
+    protected function respondWithToken($token, $user=null)
     {
         return response()->json([
+            'user' => $user,
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth('api')->factory()->getTTL() * 60
-        ]);
+        ], 200);
     }
 }

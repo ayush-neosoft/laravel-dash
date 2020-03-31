@@ -57,4 +57,18 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    protected $with = [
+        'details'
+    ];
+
+    public function details()
+    {
+        return $this->hasOne('App\Models\UserDetail');
+    }
+
+    public function plans()
+    {
+        return $this->hasMany('App\Models\Plan');
+    }
 }

@@ -2,8 +2,7 @@
 
 Route::group([
 	'namespace' => 'Auth',
-  'middleware' => 'api',
-  'prefix' => 'auth'
+  'middleware' => 'api'
 ], function ($router) {
 		Route::post('register', 'ApiAuthController@register');
     Route::post('login', 'ApiAuthController@login');
