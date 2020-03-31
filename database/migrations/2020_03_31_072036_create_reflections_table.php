@@ -15,6 +15,7 @@ class CreateReflectionsTable extends Migration
     {
         Schema::create('reflections', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('activity_id');
             $table->timestamps();
         });
     }

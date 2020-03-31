@@ -15,7 +15,7 @@ class CreatePlansTable extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->increments('id');
-            $table-unsignedInteger('user_id');
+            $table->unsignedInteger('user_id');
             $table->string('plan_year');
             $table->string('position');
             $table->unsignedInteger('exp_years');
