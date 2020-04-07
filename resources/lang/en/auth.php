@@ -14,6 +14,9 @@ return [
     */
 
     'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-
+    'throttle' => 'Too many login attempts, please try again in :seconds seconds..',
+    'login_failed' => 'These credentials do not match our records.',
+    'server_error' => 'Temporary server error, please try again.',
+    'login_success' => 'User logged in successful.',
+    'register_success' => 'User register successfully.'
 ];
