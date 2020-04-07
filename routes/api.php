@@ -10,3 +10,5 @@ Route::group([
     Route::post('refresh', 'ApiAuthController@refresh');
     Route::post('me', 'ApiAuthController@me');
 });
+
+Route::post('import', 'UsersController@import');
