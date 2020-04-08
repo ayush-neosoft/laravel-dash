@@ -6,6 +6,8 @@ use App\Traits\ApiResponse;
 use App\Utils\AppConstant;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Contracts\Validation\Validator;
+
 
 abstract class BaseApiRequest extends FormRequest
 {
@@ -41,7 +43,7 @@ abstract class BaseApiRequest extends FormRequest
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
+    protected function failedValidation(Validator $validator)
     {
         $this->setMeta('status', AppConstant::STATUS_FAIL);
         $this->setMeta('message', $validator->messages()->first());
