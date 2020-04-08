@@ -16,11 +16,11 @@ class CreateSubUsersTable extends Migration
     {
         Schema::create('sub_users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('parent_id');
-            $table->unsignedBigInteger('child_id');
+            $table->unsignedInteger('parent_id');
+            $table->unsignedInteger('child_id');
             $table->boolean('status')->default(AppConstant::STATUS_ACTIVE);
             $table->foreign('parent_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('child_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('child_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

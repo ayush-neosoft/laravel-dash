@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReflactionTable extends Migration
+class CreateReflectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,14 +14,14 @@ class CreateReflactionTable extends Migration
      */
     public function up()
     {
-        Schema::create('reflaction', function (Blueprint $table) {
+        Schema::create('reflections', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('activity_id');
             $table->string('outcome_activity');
             $table->string('description');
-            $table->date('reflaction_date');
+            $table->date('reflection_date');
             $table->boolean('status')->default(AppConstant::STATUS_ACTIVE);
-            $table->foreign('activity_id')->references('id')->on('activity')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('activity_id')->references('id')->on('activity')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateReflactionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reflaction');
+        Schema::dropIfExists('reflections');
     }
 }

@@ -16,11 +16,11 @@ class CreateDevelopmentAreaTable extends Migration
     {
         Schema::create('development_area', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('plan_id');
+            $table->unsignedInteger('plan_id');
             $table->string('plan_area');
             $table->text('description');
             $table->boolean('status')->default(AppConstant::STATUS_ACTIVE);
-            $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

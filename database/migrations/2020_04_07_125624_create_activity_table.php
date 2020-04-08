@@ -23,7 +23,7 @@ class CreateActivityTable extends Migration
             $table->date('actual_date');
             $table->boolean('is_completed');
             $table->boolean('status')->default(AppConstant::STATUS_ACTIVE);
-            $table->foreign('development_area_id')->references('id')->on('development_area')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('development_area_id')->references('id')->on('development_area')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

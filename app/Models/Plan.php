@@ -3,15 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Ramsey\Uuid\Uuid;
 
-class Plans extends Model
+class Plan extends Model
 {
     protected $table = 'plans';
-
     protected $primaryKey = 'id';
-
     protected $fillable = [
         'uuid', 'user_id', 'year', 'position_title', 'role_years', 'responsibility', 'competence_area', 'where_in_next_year', 'where_after_next_year'
     ];

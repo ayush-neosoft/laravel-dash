@@ -17,9 +17,9 @@ class CreateUserPaymentDetailsTable extends Migration
         Schema::create('user_payment_details', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->uuid('uuid');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedInteger('user_id');
             $table->boolean('status')->default(AppConstant::STATUS_ACTIVE);
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -4,14 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SubUsers extends Model
+class UserDetail extends Model
 {
-    protected $table = 'sub_users';
-
+    protected $table = 'user_details';
     protected $primaryKey = 'id';
-
     protected $fillable = [
-        'parent_id', 'child_id'
+        'user_id', 'device_name', 'os', 'ip_address'
     ];
     protected $hidden = [
         'id', 'status', 'created_at', 'updated_at'

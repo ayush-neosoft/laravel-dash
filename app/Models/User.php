@@ -2,19 +2,28 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use App\Models\Plan;
+use App\Models\SubUser;
+use App\Models\UserDetail;
 use Ramsey\Uuid\Uuid;
+use Illuminate\Database\Eloquent\Model;
 
-class Users extends Model
+class User extends Model
 {
     protected $table = 'users';
-
     protected $primaryKey = 'id';
-
     protected $fillable = [
-        'uuid', 'first_name', 'last_name', 'email', 'mobile_no', 'saica_number', 'irba_number', 'role', 'forgot_password_code', 'is_verified'
+        'uuid',
+        'first_name',
+        'last_name',
+        'email',
+        'contact_no',
+        'mobile_no', 
+        'saica_number', 
+        'irba_number', 
+        'role', 
+        'forgot_password_code', 
+        'is_verified'
     ];
     protected $hidden = [
         'id', 'status', 'created_at', 'updated_at'
@@ -39,9 +48,9 @@ class Users extends Model
      * 
      * @return array
      */
-    public function userDetails(): HasMany
+    public function userDetails()
     {
-        return $this->hasMany(UserDetails::class, 'user_id', 'id');
+        return $this->hasMany(UserDetail::class, 'user_id', 'id');
     }
 
     /**
@@ -49,9 +58,9 @@ class Users extends Model
      * 
      * @return array
      */
-    public function subUsers(): HasMany
+    public function subUsers()
     {
-        return $this->hasMany(SubUsers::class, 'parent_id', 'id');
+        return $this->hasMany(SubUser::class, 'parent_id', 'id');
     }
 
     /**
@@ -59,8 +68,8 @@ class Users extends Model
      * 
      * @return array
      */
-    public function plans(): HasMany
+    public function plans()
     {
-        return $this->hasMany(Plans::class, 'user_id', 'id');
+        return $this->hasMany(Plan::class, 'user_id', 'id');
     }
 }

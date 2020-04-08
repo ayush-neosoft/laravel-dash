@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Reflaction extends Model
+class Reflection extends Model
 {
-    protected $table = 'reflaction';
+    protected $table = 'reflections';
 
     protected $primaryKey = 'id';
 

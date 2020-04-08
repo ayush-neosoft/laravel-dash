@@ -24,7 +24,7 @@ class CreateUserBillingAddressTable extends Migration
             $table->string('post_code');
             $table->string('vat_number');
             $table->boolean('status')->default(AppConstant::STATUS_ACTIVE);
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

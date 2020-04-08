@@ -5,12 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 
-class UserPaymentDetails extends Model
+class UserPaymentDetail extends Model
 {
     protected $table = 'user_payment_details';
-
     protected $primaryKey = 'id';
-
     protected $fillable = [
         'uuid', 'user_id'
     ];
