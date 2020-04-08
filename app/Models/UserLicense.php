@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserDetail extends Model
+class UserLicense extends Model
 {
-    protected $table = 'user_details';
+    protected $table = 'user_license';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'user_id', 'device_name', 'os', 'ip_address'
+        'user_id', 'number_of_license', 'license_duration', 'duration', 'total'
     ];
     protected $hidden = [
         'id', 'status', 'created_at', 'updated_at'

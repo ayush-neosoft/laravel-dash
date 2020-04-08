@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 
-class Plan extends Model
+class UserPaymentDetail extends Model
 {
-    protected $table = 'plans';
+    protected $table = 'user_payment_details';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'uuid', 'user_id', 'year', 'position_title', 'role_years', 'responsibility', 'competence_area', 'where_in_next_year', 'where_after_next_year'
+        'uuid', 'user_id'
     ];
     protected $hidden = [
         'id', 'status', 'created_at', 'updated_at'
@@ -28,11 +28,5 @@ class Plan extends Model
         static::creating(function ($query) {
             $query->uuid = Uuid::uuid4();
         });
-    }
-
-    public function developmentAreas(): HasMany
-    {
-        return $this->hasMany(DevelopmentArea::class, 'plan_id', 'id')
-            ->with('activities');
     }
 }

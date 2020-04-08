@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserDetail extends Model
+class UserBillingAddress extends Model
 {
-    protected $table = 'user_details';
+    protected $table = 'user_billing_address';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'user_id', 'device_name', 'os', 'ip_address'
+        'user_id', 'bill_to', 'address_line_1', 'address_line_2', 'region', 'post_code', 'vat_number'
     ];
     protected $hidden = [
         'id', 'status', 'created_at', 'updated_at'
