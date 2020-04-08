@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Users;
+use App\Models\User;
 use App\Traits\ApiResponse;
 use Closure;
 use Tymon\JWTAuth\Exceptions\JWTException;
@@ -14,6 +14,13 @@ use App\Utils\AppConstant;
 class VerifyJWTToken
 {
     use ApiResponse;
+
+    protected $user;
+
+    public function __construct()
+    {
+        $this->user = new User();
+    }
 
     /**
      * Handle an incoming request.
@@ -58,9 +65,8 @@ class VerifyJWTToken
     {
         $sub = JWTAuth::getPayload($token)->get('sub');
 
-        $tokenIssuedTime = JWTAuth::getPayload($token)->get('iat');
-        $user = Users::where([
-            'uuid' => $sub['uuid'],
+        $user = $this->user->where([
+            'uuid' => $sub->uuid,
             'status' => AppConstant::STATUS_ACTIVE,
         ])->first();
 

@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
-class SignupRequest extends BaseApiRequest
+use Illuminate\Foundation\Http\FormRequest;
+
+class LoginRequest extends BaseApiRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +24,8 @@ class SignupRequest extends BaseApiRequest
     public function rules()
     {
         return [
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/'
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string|min:8'
         ];
     }
 }

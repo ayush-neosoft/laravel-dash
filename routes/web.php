@@ -11,6 +11,16 @@
 |
 */
 
+use Illuminate\Http\Request;
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/return', function (Request $request) {
+    dd('return', $request->all());
+});
+
+Route::post('/notify', function (Request $request) {
+    dd('notify', $request->all());
 });
