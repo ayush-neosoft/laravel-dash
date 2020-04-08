@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Ramsey\Uuid\Uuid;
 
 class Plan extends Model
@@ -32,7 +33,6 @@ class Plan extends Model
 
     public function developmentAreas(): HasMany
     {
-        return $this->hasMany(DevelopmentArea::class, 'plan_id', 'id')
-            ->with('activities');
+        return $this->hasMany(DevelopmentArea::class, 'plan_id', 'id')->with('activities');
     }
 }

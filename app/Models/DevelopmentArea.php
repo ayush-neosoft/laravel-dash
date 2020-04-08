@@ -19,7 +19,6 @@ class DevelopmentArea extends Model
 
     public function activities()
     {
-        return $this->hasMany(Activity::class, 'development_area_id', 'id')
-            ->with('reflections');
+        return $this->hasMany(Activity::class, 'development_area_id', 'id')->with('reflections');
     }
 }

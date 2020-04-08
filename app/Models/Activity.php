@@ -9,15 +9,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Activity extends Model
 {
     protected $table = 'activities';
+
     protected $primaryKey = 'id';
+
     protected $fillable = [
-        'development_area_id',
-        'activity_type',
-        'activity',
-        'potential_date',
-        'actual_date',
-        'is_completed'
+        'development_area_id', 'activity_type', 'activity', 'potential_date', 'actual_date', 'is_completed'
     ];
+
     protected $hidden = [
         'id', 'status', 'created_at', 'updated_at'
     ];

@@ -17,12 +17,12 @@ class CreateUserBillingAddressTable extends Migration
         Schema::create('user_billing_address', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->string('bill_to');
-            $table->string('address_line_1');
-            $table->string('address_line_2');
-            $table->string('region');
-            $table->string('post_code');
-            $table->string('vat_number');
+            $table->string('bill_to')->nullable();
+            $table->string('address_line_1')->nullable();
+            $table->string('address_line_2')->nullable();
+            $table->string('region')->nullable();
+            $table->string('post_code')->nullable();
+            $table->string('vat_number')->nullable();
             $table->boolean('status')->default(AppConstant::STATUS_ACTIVE);
             // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

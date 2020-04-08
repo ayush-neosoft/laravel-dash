@@ -18,7 +18,7 @@ class CreateUserDetailsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('user_id');
             $table->string('device_name')->nullable();
-            $table->string('os')->unique();
+            $table->string('os')->nullable();
             $table->ipAddress('ip_address')->nullable();
             $table->boolean('status')->default(AppConstant::STATUS_ACTIVE);
             // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

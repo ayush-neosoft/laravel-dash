@@ -17,9 +17,9 @@ class CreateReflectionsTable extends Migration
         Schema::create('reflections', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('activity_id');
-            $table->string('outcome_activity');
-            $table->string('description');
-            $table->date('reflection_date');
+            $table->string('outcome_activity')->nullable();
+            $table->string('description')->nullable();
+            $table->date('reflection_date')->nullable();
             $table->boolean('status')->default(AppConstant::STATUS_ACTIVE);
             // $table->foreign('activity_id')->references('id')->on('activity')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

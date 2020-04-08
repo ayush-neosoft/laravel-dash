@@ -11,19 +11,11 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     protected $table = 'users';
+
     protected $primaryKey = 'id';
+
     protected $fillable = [
-        'uuid',
-        'first_name',
-        'last_name',
-        'email',
-        'contact_no',
-        'mobile_no', 
-        'saica_number', 
-        'irba_number', 
-        'role', 
-        'forgot_password_code', 
-        'is_verified'
+        'uuid', 'first_name', 'last_name', 'email', 'contact_no', 'mobile_no', 'saica_number', 'irba_number', 'role', 'forgot_password_code', 'is_verified'
     ];
     protected $hidden = [
         'id', 'status', 'created_at', 'updated_at'
