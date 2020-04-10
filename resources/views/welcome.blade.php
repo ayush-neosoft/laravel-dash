@@ -68,31 +68,16 @@
 
 <body>
     <div class="flex-center position-ref full-height">
-        @php
-        $str = "merchant_id=12656282&merchant_key=5qwd9c1brxoyc&return_url=http%3A%2F%2F0ac63408.ngrok.io%2Freturn&cancel_url=http%3A%2F%2F0ac63408.ngrok.io&notify=http%3A%2F%2F0ac63408.ngrok.io%2Fnotify&name_first=Bob&name_last=Smith&email_address=sbtu01%40payfast.co.za&m_payment_id=TRN123456789&amount=200.00&item_name=Widget+Model+123&item_description=Widget+Model+123";
-        $md5 = md5($str);
-        @endphp
-        <form action="https://sandbox.payfast.co.za/eng/process" method="post" name="frmPay" id="frmPay">
-            <!-- Receiver Details -->
-            <input type="text" name="merchant_id" value="12656282">
-            <input type="text" name="merchant_key" value="5qwd9c1brxoyc">
-            <input type="text" name="return_url" value="http://0ac63408.ngrok.io/return">
-            <input type="text" name="cancel_url" value="http://0ac63408.ngrok.io/">
-            <input type="text" name="notify_url" value="http://0ac63408.ngrok.io/notify">
-            <!-- Payer Details -->
-            <input type="text" name="name_first" value="Bob">
-            <input type="text" name="name_last" value="Smith">
-            <input type="text" name="email_address" value="sbtu01@payfast.co.za">
-            <!-- Transaction Details -->
-            <input type="text" name="m_payment_id" value="TRN123456789">
-            <input type="text" name="amount" value="200.00">
-            <input type="text" name="item_name" value="Widget Model 123">
-            <input type="text" name="item_description" value="Widget Model 123">
-            <!-- Transaction Options -->
-            <input type="text" name="email_confirmation" value="">
-            <!-- Security -->
-            <input type="text" name="signature" value="<?php echo $md5; ?>">
-            <input type="submit" name="submit" value="submit">
+        <form action="https://sandbox.payfast.co.za/eng/process" method="POST">
+            <input type="text" name="merchant_id" value="10016913" />
+            <input type="text" name="merchant_key" value="mmnzqbek8bp5b" />
+            <input type="hidden" name="return_url" value="http://0934bdfe.ngrok.io/return" />
+            <input type="hidden" name="cancel_url" value="http://0934bdfe.ngrok.io/cancel" />
+            <input type="hidden" name="notify_url" value="http://0934bdfe.ngrok.io/notify" />
+            <input type="text" name="amount" value="5" />
+            <input type="text" name="item_name" value="CA CPD LICENSES" />
+            <input type="text" name="email_address" value="sbtu01@payfast.co.za" />
+            <input type="submit" name="submit" />
         </form>
     </div>
 </body>
