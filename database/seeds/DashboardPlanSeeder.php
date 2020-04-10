@@ -61,7 +61,7 @@ class DashboardPlanSeeder extends Seeder
             'actual_date' => Carbon::now()->format('Y-m-d')
         );
 
-        $reflactions = array(
+        $reflections = array(
             'outcome_activity' => 'Reflaction',
             'description' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
             'reflection_date' => Carbon::now()->format('Y-m-d')
@@ -95,12 +95,12 @@ class DashboardPlanSeeder extends Seeder
                     $activity->actual_date = $activities['actual_date'];
                     $activity->save();
 
-                    $reflaction = new Reflection();
-                    $reflaction->activity_id = $activity->id;
-                    $reflaction->outcome_activity = $reflactions['outcome_activity'] . " " . $plans[$i]['year'] . "-" . $k;
-                    $reflaction->description = $reflactions['description'];
-                    $reflaction->reflection_date = $reflactions['reflection_date'];
-                    $reflaction->save();
+                    $reflection = new Reflection();
+                    $reflection->activity_id = $activity->id;
+                    $reflection->outcome_activity = $reflactions['outcome_activity'] . " " . $plans[$i]['year'] . "-" . $k;
+                    $reflection->description = $reflactions['description'];
+                    $reflection->reflection_date = $reflactions['reflection_date'];
+                    $reflection->save();
                 }
             }
         }

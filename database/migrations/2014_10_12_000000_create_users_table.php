@@ -17,16 +17,10 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
+            $table->unsignedInteger('parent_id')->nullable();
             $table->string('email')->unique();
-            $table->string('password')->nullable();
-            $table->string('contact_no')->nullable();
-            $table->string('mobile_no')->nullable();
-            $table->string('saica_number')->nullable();
-            $table->string('irba_number')->nullable();
-            $table->string('role')->nullable();
-            $table->boolean('is_verified')->default(AppConstant::STATUS_INACTIVE);
+            $table->string('password');
+            $table->timestamp('email_verified_at')->nullable();
             $table->boolean('status')->default(AppConstant::STATUS_ACTIVE);
             $table->timestamps();
         });

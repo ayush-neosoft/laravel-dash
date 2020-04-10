@@ -1,19 +1,12 @@
 <?php
 
-use App\Models\User;
-use App\Models\UserDetail;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
     public function run()
     {
-        $this->call(DashboardPlanSeeder::class);
+        $this->call(PlansSeeder::class);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\v1\Dashboard;
 
 use App\Imports\UsersImport;
 use Maatwebsite\Excel\Facades\Excel;
