@@ -17,10 +17,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/return', function (Request $request) {
-    dd('return', $request->all());
+Route::any('/return', function (Request $request) {
+    echo "return";
+    echo "<pre>";
+    print_r($request->all());
+    exit;
 });
 
-Route::post('/notify', function (Request $request) {
-    dd('notify', $request->all());
+Route::any('/cancel', function (Request $request) {
+    echo "cancel";
+    echo "<pre>";
+    print_r($request->all());
+    exit;
+});
+
+Route::any('/notify', function (Request $request) {
+    echo "notify";
+    echo "<pre>";
+    print_r($request->all());
+    exit;
 });
