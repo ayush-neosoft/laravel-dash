@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDevelopmentAreaTable extends Migration
+class CreateDevelopmentAreasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class CreateDevelopmentAreaTable extends Migration
      */
     public function up()
     {
-        Schema::create('development_area', function (Blueprint $table) {
+        Schema::create('development_areas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('plan_id');
             $table->string('plan_area');
@@ -32,6 +32,6 @@ class CreateDevelopmentAreaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('development_area');
+        Schema::dropIfExists('development_areas');
     }
 }

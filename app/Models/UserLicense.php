@@ -6,14 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserLicense extends Model
 {
-    protected $table = 'user_license';
-
+    protected $table = 'user_licenses';
     protected $primaryKey = 'id';
-
-    protected $fillable = [
-        'user_id', 'number_of_license', 'license_duration', 'duration', 'total'
-    ];
-
+    protected $guarded = [];
     protected $hidden = [
         'id', 'status', 'created_at', 'updated_at'
     ];

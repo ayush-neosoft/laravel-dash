@@ -2,20 +2,20 @@
 
 namespace App\Models;
 
-use App\Models\Reflection;
+use App\Models\Order;
 use Illuminate\Database\Eloquent\Model;
 
-class Activity extends Model
+class OrderDetail extends Model
 {
-    protected $table = 'activities';
+    protected $table = 'order_details';
     protected $primaryKey = 'id';
     protected $guarded = [];
     protected $hidden = [
         'id', 'status', 'created_at', 'updated_at'
     ];
 
-    public function reflections()
+    public function order()
     {
-        return $this->hasMany(Reflection::class, 'activity_id', 'id');
+        return $this->belongsTo(Order::class);
     }
 }

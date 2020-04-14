@@ -20,7 +20,6 @@ class CreateUserMetaTable extends Migration
             $table->string('device_name')->nullable();
             $table->string('os')->nullable();
             $table->ipAddress('ip_address')->nullable();
-            $table->boolean('status')->default(AppConstant::STATUS_ACTIVE);
             // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

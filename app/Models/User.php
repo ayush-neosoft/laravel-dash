@@ -3,23 +3,21 @@
 namespace App\Models;
 
 use App\Models\Plan;
-use App\Models\SubUser;
-use App\Models\UserDetail;
 use Ramsey\Uuid\Uuid;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\UserMeta;
 
-class User extends Model
+use App\Models\UserDetail;
+use App\Notifications\VerifyApiEmail;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable implements MustVerifyEmail
 {
-    protected $table = 'users';
+    use Notifiable;
 
-    protected $primaryKey = 'id';
-
-    protected $fillable = [
-        'uuid', 'first_name', 'last_name', 'email', 'contact_no', 'mobile_no', 'saica_number', 'irba_number', 'role', 'forgot_password_code', 'is_verified'
-    ];
-    protected $hidden = [
-        'id', 'password', 'status', 'created_at', 'updated_at'
-    ];
+    protected $guarded = [];
+    protected $hidden = ['password', 'created_at', 'updated_at'];
 
     /**
      * The "booting" method of the model.
@@ -35,33 +33,29 @@ class User extends Model
         });
     }
 
-    /**
-     * Get User Details
-     * 
-     * @return array
-     */
-    public function userDetails()
+    public function details()
     {
-        return $this->hasMany(UserDetail::class, 'user_id', 'id');
+        return $this->hasMany(UserDetail::class);
     }
 
-    /**
-     * Get Sub Users
-     * 
-     * @return array
-     */
-    public function subUsers()
+    public function usermeta()
     {
-        return $this->hasMany(SubUser::class, 'parent_id', 'id');
+        return $this->hasMany(UserMeta::class);
     }
 
-    /**
-     * Get All Plans
-     * 
-     * @return array
-     */
     public function plans()
     {
-        return $this->hasMany(Plan::class, 'user_id', 'id');
+        return $this->hasMany(Plan::class);
+    }
+
+    public function verify()
+    {
+        $this->email_verified_at = date("Y-m-d g:i:s");
+        return $this->update();
+    }
+
+    public function send_api_email_verify_notification()
+    {
+        $this->notify(new VerifyApiEmail); // my notification
     }
 }

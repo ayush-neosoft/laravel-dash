@@ -18,7 +18,11 @@ trait GenerateToken
      */
     protected function getToken($user)
     {
-        $customClaims = ['uuid' => $user->uuid, 'user_detail_id' => $user->userDetail->id];
+        $customClaims = [
+            'uuid' => $user->uuid, 
+            'user_meta' => $user->meta
+        ];
+
         $payload = JWTFactory::sub($customClaims)->make();
         $this->token = JWTAuth::encode($payload);
         $this->accessToken = $this->token->get();
